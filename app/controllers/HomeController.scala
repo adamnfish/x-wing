@@ -1,6 +1,7 @@
 package controllers
 
 import javax.inject._
+import data.Ships
 import play.api._
 import play.api.mvc._
 
@@ -19,6 +20,16 @@ class HomeController @Inject() extends Controller {
    */
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
+  }
+
+
+  def chooseShips = Action {
+    Ok(views.html.chooseships(Ships.allShips))
+  }
+
+  def hud = Action {
+    // TODO read from submission
+    Ok(views.html.hud(Ships.allShips))
   }
 
 }

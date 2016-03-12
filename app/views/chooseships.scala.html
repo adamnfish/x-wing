@@ -1,0 +1,23 @@
+@(ships: List[models.Ship])
+
+@main("Choose ships - X-Wing", "x-wing-choose-ships") {
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Choose ships</h1>
+            <form>
+                @for(ship <- ships) {
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox" name="@ship.code" value="1" /> @ship.name
+                        </label>
+                    </div>
+                }
+                <button class="btn btn-default" type="submit">Launch!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+}
