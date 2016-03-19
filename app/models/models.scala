@@ -12,14 +12,19 @@ object Red extends Colour
 object White extends Colour
 object Green extends Colour
 
-sealed trait Manoeuvre
+sealed trait Manoeuvre {
+  val speed: Int
+  val colour: Colour
+}
 case class Bank(speed: Int, direction: Either[Unit, Unit], colour: Colour) extends Manoeuvre
 case class Turn(speed: Int, direction: Either[Unit, Unit], colour: Colour) extends Manoeuvre
 case class Straight(speed: Int, colour: Colour) extends Manoeuvre
 case class KTurn(speed: Int, colour: Colour) extends Manoeuvre
 case class SLoop(speed: Int, direction: Either[Unit, Unit], colour: Colour) extends Manoeuvre
 case class TallonRoll(speed: Int, direction: Either[Unit, Unit], colour: Colour) extends Manoeuvre
-case class Stop(colour: Colour) extends Manoeuvre
+case class Stop(colour: Colour) extends Manoeuvre {
+  override val speed = 0
+}
 object Manoeuvre {
   /**
     * DSL of sorts for manoeuvres
@@ -36,3 +41,26 @@ object Manoeuvre {
     def stop(colour: Colour): Set[Manoeuvre] = Set(Stop(colour))
   }
 }
+
+case class ManoeuvreGrid(
+  rows: List[(Int, ManoeuvreGridRow)],
+  hasLeftBank: Boolean,
+  hasRightBank: Boolean,
+  hasLeftTurn: Boolean,
+  hasRightTurn: Boolean,
+  hasStraight: Boolean,
+  hasKTurn: Boolean,
+  hasSLoop: Boolean,
+  hasTallonRoll: Boolean
+)
+case class ManoeuvreGridRow(
+  leftBank: Option[Colour],
+  rightBank: Option[Colour],
+  leftTurn: Option[Colour],
+  rightTurn: Option[Colour],
+  straight: Option[Colour],
+  stop: Option[Colour],
+  kTurn: Option[Colour],
+  sLoop: Option[Colour],
+  tallonRoll: Option[Colour]
+)

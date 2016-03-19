@@ -24,12 +24,13 @@ class HomeController @Inject() extends Controller {
 
 
   def chooseShips = Action {
-    Ok(views.html.chooseships(Ships.allShips))
+    Ok(views.html.chooseShips(Ships.allShips))
   }
 
   def hud = Action {
     // TODO read from submission
-    Ok(views.html.hud(Ships.allShips))
+    val ships = Ships.allShips
+    Ok(views.html.hud(ships))
   }
 
 }

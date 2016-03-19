@@ -1,13 +1,91 @@
 @(ships: List[models.Ship])
 
+@import logic.Manoeuvres
+
 @main("HUD - X-Wing", "x-wing-hud") {
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <h1>HUD</h1>
-
+    @for(ship <- ships) {
+        <div class="col m6">
+            <p>@ship.name</p>
+            @defining(Manoeuvres.grid(ship.manoeuvres)) { grid =>
+                <table class="bordered centered">
+                    <tbody>
+                        @for((speed, row) <- grid.rows) {
+                            <tr>
+                                <td class="hud--speed">@speed</td>
+                                @if(grid.hasLeftTurn) {
+                                    @row.leftTurn.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">LT</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasLeftBank) {
+                                    @row.leftBank.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">LB</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasStraight) {
+                                    @if(row.straight.isDefined) {
+                                        @row.straight.map { colour =>
+                                            <td class="@Manoeuvres.colourCode(colour)-text">|</td>
+                                        }
+                                    }
+                                    @if(row.stop.isDefined) {
+                                        @row.stop.map { colour =>
+                                            <td class="@Manoeuvres.colourCode(colour)-text">0</td>
+                                        }
+                                    }
+                                    @if(row.stop.isEmpty && row.straight.isEmpty) {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasRightBank) {
+                                    @row.rightBank.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">RB</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasRightTurn) {
+                                    @row.rightTurn.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">RT</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasKTurn) {
+                                    @row.kTurn.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">K</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasSLoop) {
+                                    @row.sLoop.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasTallonRoll) {
+                                    @row.tallonRoll.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
         </div>
+    }
     </div>
 </div>
 
