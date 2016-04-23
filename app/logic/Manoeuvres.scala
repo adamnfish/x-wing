@@ -17,8 +17,10 @@ object Manoeuvres {
           manoeuvresAtThisSpeed.find(isStraight).map(_.colour),
           manoeuvresAtThisSpeed.find(isStop).map(_.colour),
           manoeuvresAtThisSpeed.find(isKTurn).map(_.colour),
-          manoeuvresAtThisSpeed.find(isSloop).map(_.colour),
-          manoeuvresAtThisSpeed.find(isTallonRoll).map(_.colour)
+          manoeuvresAtThisSpeed.find(isLeftSloop).map(_.colour),
+          manoeuvresAtThisSpeed.find(isRightSloop).map(_.colour),
+          manoeuvresAtThisSpeed.find(isLeftTallonRoll).map(_.colour),
+          manoeuvresAtThisSpeed.find(isRightTallonRoll).map(_.colour)
         )
       }
     ManoeuvreGrid(
@@ -29,8 +31,10 @@ object Manoeuvres {
       manoeuvres.exists(isRightTurn),
       manoeuvres.exists(isStraight) || manoeuvres.exists(isStop),
       manoeuvres.exists(isKTurn),
-      manoeuvres.exists(isSloop),
-      manoeuvres.exists(isTallonRoll)
+      manoeuvres.exists(isLeftSloop),
+      manoeuvres.exists(isRightSloop),
+      manoeuvres.exists(isLeftTallonRoll),
+      manoeuvres.exists(isRightTallonRoll)
     )
   }
 
@@ -62,12 +66,20 @@ object Manoeuvres {
     case kTurn: KTurn => true
     case _ => false
   }
-  def isSloop(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
-    case sLoop: SLoop => true
+  def isLeftSloop(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
+    case sLoop: SLoop => sLoop.direction.isLeft
     case _ => false
   }
-  def isTallonRoll(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
-    case tallonRoll: TallonRoll => true
+  def isRightSloop(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
+    case sLoop: SLoop => sLoop.direction.isRight
+    case _ => false
+  }
+  def isLeftTallonRoll(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
+    case tallonRoll: TallonRoll => tallonRoll.direction.isLeft
+    case _ => false
+  }
+  def isRightTallonRoll(manoeuvre: Manoeuvre): Boolean = manoeuvre match {
+    case tallonRoll: TallonRoll => tallonRoll.direction.isLeft
     case _ => false
   }
 

@@ -71,7 +71,7 @@ object Ships {
   )
   val tieFO = Ship(Empire, "TIE/fo", "tie-fo", 0,
     1.turns() ++
-      2.turns(Green) ++ 2.banks(Green) ++ 2.straight(Green) ++ 2.sloop(Red) ++
+      2.turns(Green) ++ 2.banks(Green) ++ 2.straight(Green) ++ 2.sloops(Red) ++
       3.turns() ++ 3.banks() ++ 3.straight(Green) ++
       4.straight() ++ 4.kTurn(Red) ++
       5.straight()

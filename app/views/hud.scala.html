@@ -15,6 +15,20 @@
                         @for((speed, row) <- grid.rows) {
                             <tr>
                                 <td class="hud--speed">@speed</td>
+                                @if(grid.hasLeftTallonRoll) {
+                                    @row.leftTallonRoll.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">TR</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasLeftSLoop) {
+                                    @row.leftSLoop.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
                                 @if(grid.hasLeftTurn) {
                                     @row.leftTurn.map { colour =>
                                         <td class="@Manoeuvres.colourCode(colour)-text">LT</td>
@@ -58,23 +72,23 @@
                                         <td></td>
                                     }
                                 }
+                                @if(grid.hasRightSLoop) {
+                                    @row.rightSLoop.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
+                                @if(grid.hasRightTallonRoll) {
+                                    @row.rightTallonRoll.map { colour =>
+                                        <td class="@Manoeuvres.colourCode(colour)-text">TR</td>
+                                    }.getOrElse {
+                                        <td></td>
+                                    }
+                                }
                                 @if(grid.hasKTurn) {
                                     @row.kTurn.map { colour =>
                                         <td class="@Manoeuvres.colourCode(colour)-text">K</td>
-                                    }.getOrElse {
-                                        <td></td>
-                                    }
-                                }
-                                @if(grid.hasSLoop) {
-                                    @row.sLoop.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
-                                    }.getOrElse {
-                                        <td></td>
-                                    }
-                                }
-                                @if(grid.hasTallonRoll) {
-                                    @row.tallonRoll.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">SL</td>
                                     }.getOrElse {
                                         <td></td>
                                     }
