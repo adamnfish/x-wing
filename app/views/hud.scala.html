@@ -5,9 +5,9 @@
 @main("HUD - X-Wing", "x-wing-hud") {
 
 <div class="container">
-    <div class="row">
+    <div class="maneuver-grid__container">
     @for(ship <- ships) {
-        <div class="col m6">
+        <div class="maneuver-grid__item">
             @defining(Manoeuvres.grid(ship.manoeuvres)) { grid =>
                 <table class="bordered centered maneuver-grid__table grey">
                     <caption class="maneuver-grid__title">@ship.name</caption>
