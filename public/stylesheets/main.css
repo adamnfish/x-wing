@@ -1,0 +1,26 @@
+.maneuver-grid__item {
+
+}
+
+.maneuver-grid__table td {
+    text-shadow: 1px 1px 0 #000;
+    padding: 0;
+}
+
+.maneuver-grid__table th {
+    padding: 0;
+}
+
+.maneuver-grid__table .arrow {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-shadow: 1px 2px 1px #000;
+}
+
+.arrow.k-turn {
+    transform: scaleX(-1);
+}
+
+.maneuver-grid__title {
+    font-weight: bold;
+}

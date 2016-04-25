@@ -8,9 +8,9 @@
     <div class="row">
     @for(ship <- ships) {
         <div class="col m6">
-            <p>@ship.name</p>
             @defining(Manoeuvres.grid(ship.manoeuvres)) { grid =>
-                <table class="bordered centered">
+                <table class="bordered centered maneuver-grid__table grey">
+                    <caption class="maneuver-grid__title">@ship.name</caption>
                     <tbody>
                         @for((speed, row) <- grid.rows) {
                             <tr>
@@ -31,14 +31,14 @@
                                 }
                                 @if(grid.hasLeftTurn) {
                                     @row.leftTurn.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">LT</td>
+                                        <td class="@Manoeuvres.colourCode(colour)-text arrow">↰</td>
                                     }.getOrElse {
                                         <td></td>
                                     }
                                 }
                                 @if(grid.hasLeftBank) {
                                     @row.leftBank.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">LB</td>
+                                        <td class="@Manoeuvres.colourCode(colour)-text arrow">↖</td>
                                     }.getOrElse {
                                         <td></td>
                                     }
@@ -46,12 +46,12 @@
                                 @if(grid.hasStraight) {
                                     @if(row.straight.isDefined) {
                                         @row.straight.map { colour =>
-                                            <td class="@Manoeuvres.colourCode(colour)-text">|</td>
+                                            <td class="@Manoeuvres.colourCode(colour)-text arrow">🠙</td>
                                         }
                                     }
                                     @if(row.stop.isDefined) {
                                         @row.stop.map { colour =>
-                                            <td class="@Manoeuvres.colourCode(colour)-text">0</td>
+                                            <td class="@Manoeuvres.colourCode(colour)-text arrow">⬛</td>
                                         }
                                     }
                                     @if(row.stop.isEmpty && row.straight.isEmpty) {
@@ -60,14 +60,14 @@
                                 }
                                 @if(grid.hasRightBank) {
                                     @row.rightBank.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">RB</td>
+                                        <td class="@Manoeuvres.colourCode(colour)-text arrow">↗</td>
                                     }.getOrElse {
                                         <td></td>
                                     }
                                 }
                                 @if(grid.hasRightTurn) {
                                     @row.rightTurn.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">RT</td>
+                                        <td class="@Manoeuvres.colourCode(colour)-text arrow">↱</td>
                                     }.getOrElse {
                                         <td></td>
                                     }
@@ -88,7 +88,7 @@
                                 }
                                 @if(grid.hasKTurn) {
                                     @row.kTurn.map { colour =>
-                                        <td class="@Manoeuvres.colourCode(colour)-text">K</td>
+                                        <td class="@Manoeuvres.colourCode(colour)-text arrow k-turn">⮏</td>
                                     }.getOrElse {
                                         <td></td>
                                     }

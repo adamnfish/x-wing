@@ -86,8 +86,8 @@ object Manoeuvres {
   def colourCode(colour: Colour): String = {
     colour match {
       case Red => "red"
-      case White => "grey"
-      case Green => "green"
+      case White => "white"
+      case Green => "light-green"
     }
   }
 }
