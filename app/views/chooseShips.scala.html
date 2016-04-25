@@ -6,15 +6,16 @@
     <div class="row">
         <div class="col-sm-12">
             <h1>Choose ships</h1>
-            <form>
+            <form class="ship-list__form" action="/hud">
                 @for(ship <- ships) {
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox" name="@ship.code" value="1" /> @ship.name
-                        </label>
-                    </div>
+                    <p class="ship-list__item">
+                        <input type="checkbox" id="@ship.code" name="@ship.code" value="1" />
+                        <label for="@ship.code">@ship.name</label>
+                    </p>
                 }
-                <button class="btn btn-default" type="submit">Launch!</button>
+                <div class="ship-list__button">
+                    <button class="btn btn-large" type="submit">Launch!</button>
+                </div>
             </form>
         </div>
     </div>

@@ -4,33 +4,24 @@ import javax.inject._
 import data.Ships
 import play.api._
 import play.api.mvc._
+import logic.ShipLogic._
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
+
 @Singleton
 class HomeController @Inject() extends Controller {
-
-  /**
-   * Create an Action to render an HTML page with a welcome message.
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
   def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+    // Make a home page when there's something to say on it
+    SeeOther("/choose-ships")
   }
-
 
   def chooseShips = Action {
     Ok(views.html.chooseShips(Ships.allShips))
   }
 
-  def hud = Action {
+  def hud = Action { implicit request =>
     // TODO read from submission
-    val ships = Ships.allShips
+    val shipCodes = shipcodesFromQueryString(request.rawQueryString)
+    val ships = lookupShips(Ships.allShips, shipCodes)
     Ok(views.html.hud(ships))
   }
-
 }
