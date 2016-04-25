@@ -18,7 +18,7 @@ object Ships {
       4.straight() ++ 4.kTurn(Red) ++
       5.straight()
   )
-  val firespray = Ship(Empire, "Firespray", "firespray", 2,
+  val firespray = Ship(Empire, "Firespray (Slave I)", "firespray", 2,
     1.banks(Green) ++ 1.straight(Green) ++
       2.turns() ++ 2.banks() ++ 2.straight() ++
       3.turns() ++ 3.banks() ++ 3.straight() ++ 3.kTurn(Red) ++
@@ -96,7 +96,7 @@ object Ships {
       3.turns(Red) ++ 3.banks() ++ 3.straight() ++
       4.straight(Red) ++ 4.kTurn(Red)
   )
-  val yt1300 = Ship(Rebellion, "YT-1300", "yt-1300", 2,
+  val yt1300 = Ship(Rebellion, "YT-1300 (Falcon)", "yt-1300", 2,
     1.turns() ++ 1.banks() ++ 1.straight(Green) ++
       2.turns() ++ 2.banks() ++ 2.straight(Green) ++
       3.banks() ++ 3.straight() ++3.kTurn(Red) ++
@@ -121,7 +121,7 @@ object Ships {
       3.banks(Red) ++ 3.straight() ++
       4.straight(Red)
   )
-  val z95 = Ship(Rebellion, "Z-95", "z-95", 4,
+  val z95 = Ship(Rebellion, "Z-95 (Headhunter)", "z-95", 4,
     1.banks() ++ 1.straight(Green) ++
       2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
       3.turns() ++ 3.banks() ++ 3.straight() ++ 3.kTurn(Red) ++
