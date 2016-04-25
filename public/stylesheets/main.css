@@ -44,7 +44,10 @@ main {
 
 .maneuver-grid__title {
     text-align: left;
-    padding-left: 20px;
+}
+
+.faction--icon {
+    width: 20px;
 }
 
 .maneuver-grid__table td {

@@ -10,7 +10,10 @@
         <div class="maneuver-grid__item">
             @defining(Manoeuvres.grid(ship.manoeuvres)) { grid =>
                 <table class="bordered centered maneuver-grid__table grey">
-                    <caption class="maneuver-grid__title">@ship.name</caption>
+                    <caption class="maneuver-grid__title">
+                        <img class="faction--icon right" src='@routes.Assets.versioned(s"images/${ship.faction.label}.png")' />
+                        @ship.name
+                    </caption>
                     <tbody>
                         @for((speed, row) <- grid.rows) {
                             <tr>

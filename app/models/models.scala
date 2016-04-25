@@ -2,10 +2,10 @@ package models
 
 case class Ship(faction: Faction, name: String, code: String, wave: Int, manoeuvres: Set[Manoeuvre])
 
-sealed trait Faction
-object Empire extends Faction
-object Rebellion extends Faction
-object Scum extends Faction
+sealed abstract class Faction(val label: String)
+object Empire extends Faction("empire")
+object Rebellion extends Faction("rebels")
+object Scum extends Faction("scum")
 
 sealed trait Colour
 object Red extends Colour
