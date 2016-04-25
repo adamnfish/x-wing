@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 .footer.row {
     margin-bottom: 0px;
 }
@@ -11,6 +21,7 @@
 .maneuver-grid__item {
     flex: 0 0 32%;
     margin-top: 10px;
+    align-self: flex-end;
 }
 
 @media only screen and (min-width: 1200px) {
