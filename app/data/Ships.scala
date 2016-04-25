@@ -165,13 +165,52 @@ object Ships {
       4.straight() ++ 4.kTurn(Red)
   )
 
-  val starViper = Ship(Scum, "StarViper", "starviper", 6, Set.empty)
-  val scyk = Ship(Scum, "M3-A Scyk", "scyk", 6, Set.empty)
-  val ig2000 = Ship(Scum, "IG-2000", "ig-2000", 6, Set.empty)
-  val houndsTooth = Ship(Scum, "Hound's Tooth", "hounds-tooth", 7, Set.empty)
-  val kihraxz = Ship(Scum, "Kihraxz Fghter", "kihraxz", 7, Set.empty)
-  val mistHunter = Ship(Scum, "Mist Hunter", "mist-hunter", 8, Set.empty)
-  val punishingOne = Ship(Scum, "Punishing One", "punishing-one", 8, Set.empty)
+  val starViper = Ship(Scum, "StarViper", "starviper", 6,
+    1.turns() ++ 1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks() ++ 2.straight(Green) ++
+      3.banks() ++ 3.straight(Green) ++ 3.sloops(Red) ++
+      4.straight()
+  )
+  val scyk = Ship(Scum, "M3-A Scyk", "scyk", 6,
+    1.turns() ++ 1.banks() ++
+      2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
+      3.banks() ++ 3.straight(Green) ++ 3.kTurn(Red) ++
+      4.straight() ++
+      5.kTurn(Red)
+  )
+  val ig2000 = Ship(Scum, "IG-2000", "ig-2000", 6,
+    1.turns() ++ 1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
+      3.banks(Green) ++ 3.straight(Green) ++ 3.sloops(Red) ++
+      4.kTurn(Red)
+  )
+  val houndsTooth = Ship(Scum, "YV-666 (Hound's Tooth)", "yv-666", 7,
+    0.stop(Red) ++
+      1.banks(Green) ++ 1.straight(Green) ++
+      2.turns(Red) ++ 2.banks() ++ 2.straight(Green) ++
+      3.turns() ++ 3.banks() ++ 3.straight(Green) ++
+      4.straight()
+  )
+  val kihraxz = Ship(Scum, "Kihraxz Fghter", "kihraxz", 7,
+    1.turns() ++ 1.banks(Green) ++
+      2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
+      3.banks() ++ 3.straight() ++
+      4.straight() ++ 4.kTurn(Red) ++
+      5.kTurn(Red)
+  )
+  val mistHunter = Ship(Scum, "Mist Hunter", "mist-hunter", 8,
+    1.turns(Red) ++ 1.banks(Green) ++ 1.straight(Green) ++
+      2.turns()++ 2.banks() ++ 2.straight(Green) ++
+      3.banks(Red) ++ 3.straight(Green) ++ 3.kTurn(Red) ++
+      4.straight() ++ 4.kTurn(Red)
+  )
+  val punishingOne = Ship(Scum, "Punishing One", "punishing-one", 8,
+    1.turn(left, Green) ++ 1.turn(right, White) ++ 1.bank(left, Green) ++ 1.bank(right, White) ++ 1.straight(Green) ++
+      2.turn(left, Green) ++ 2.turn(right, White) ++ 2.bank(left, Green) ++ 2.bank(right, White) ++
+        2.straight(Green) ++ 2.sloop(left, White) ++ 2.sloop(right, Red) ++
+      3.banks() ++ 3.straight() ++
+      4.straight() ++ 4.kTurn(Red)
+  )
 
   val allShips = List(
     // glorious empire
@@ -200,6 +239,7 @@ object Ships {
     kWing,
     t70,
     ghost,
+    ghostAttackShuttle,
     // scum
     starViper,
     scyk,
