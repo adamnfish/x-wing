@@ -77,11 +77,22 @@ object Ships {
       5.straight()
   )
   val tieInquisitor = Ship(Empire, "TIE Advanced Prototype", "tie-advanced-prototype", 8,
-    1.turns(Green) ++ 1.banks(Green) ++ 1.straight(Green) ++
+    1.turns(Green) ++ 1.banks(Green) ++
       2.turns() ++ 2.banks() ++ 2.straight(Green) ++
       3.turns() ++ 3.banks() ++ 3.straight(Green) ++
-      4.straight() ++ 4.kTurn(Red) ++
+      4.straight(Green) ++ 4.kTurn(Red) ++
       5.straight()
+  )
+  val tieSF = Ship(Empire, "Special Forces TIE", "tie-sf", 9,
+    1.turns(Red) ++ 1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks() ++ 2.straight(Green) ++
+      3.turns(Red) ++ 3.banks() ++ 3.straight(Green) ++ 3.sloops(Red) ++
+      4.straight()
+  )
+  val tieStriker = Ship(Empire, "TIE Striker", "tie-striker", 10,
+    1.turns() ++ 1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks() ++ 2.straight(Green) ++ 2.kTurn(Red) ++ 2.sloops(Red) ++
+      3.banks() ++ 3.straight(Green)
   )
 
   val xWing = Ship(Rebellion, "X-Wing", "x-wing", 0,
@@ -164,6 +175,19 @@ object Ships {
       3.turns(Red) ++ 3.banks() ++ 3.straight() ++
       4.straight() ++ 4.kTurn(Red)
   )
+  val arc170 = Ship(Rebellion, "ARC-170", "arc-170", 9,
+    1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
+      3.turns(Red) ++ 3.banks() ++ 3.straight() ++
+      4.straight(Red) ++ 4.kTurn(Red)
+  )
+  val uWing = Ship(Rebellion, "U-Wing", "u-wing", 10,
+    0.stop(Red) ++
+      1.banks(Green) ++ 1.straight(Green) ++
+      2.turns() ++ 2.banks(Green) ++ 2.straight(Green) ++
+      3.banks() ++ 3.straight() ++
+      4.straight()
+  )
 
   val starViper = Ship(Scum, "StarViper", "starviper", 6,
     1.turns() ++ 1.banks(Green) ++ 1.straight(Green) ++
@@ -211,6 +235,20 @@ object Ships {
       3.banks() ++ 3.straight() ++
       4.straight() ++ 4.kTurn(Red)
   )
+  val shadowCaster = Ship(Scum, "Shadow Caster", "shadow caster", 9,
+    1.banks() ++ 1.straight() ++
+      2.turns() ++ 2.banks() ++ 2.straight() ++
+      3.turns(Green) ++ 3.banks(Green) ++ 3.straight(Green) ++
+      4.straight(Green) ++
+      5.straight() ++ 5.kTurn(Red)
+  )
+  val protectorateStarfighter = Ship(Scum, "Protectorate Starfighter", "protectorate-starfighter", 9,
+    1.turns() ++
+      2.turns(Green) ++ 2.banks(Green) ++ 2.straight(Green) ++ 2.tallons(Red) ++
+      3.turns() ++ 3.banks() ++ 3.straight(Green) ++
+      4.straight() ++ 4.kTurn(Red) ++
+      5.straight()
+  )
 
   val allShips = List(
     // glorious empire
@@ -226,6 +264,8 @@ object Ships {
     tiePunisher,
     tieFO,
     tieInquisitor,
+    tieSF,
+    tieStriker,
     // rebels
     xWing,
     yWing,
@@ -240,6 +280,8 @@ object Ships {
     t70,
     ghost,
     ghostAttackShuttle,
+    arc170,
+    uWing,
     // scum
     starViper,
     scyk,
@@ -247,6 +289,8 @@ object Ships {
     houndsTooth,
     kihraxz,
     mistHunter,
-    punishingOne
+    punishingOne,
+    shadowCaster,
+    protectorateStarfighter
   )
 }
